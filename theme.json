@@ -80,6 +80,16 @@
 			"fluid": true,
 			"fontFamilies": [
 				{
+					"fontFamily": "var(--wp--custom--heading--font-family)",
+					"name": "Default Heading Font",
+					"slug": "heading"
+				},
+				{
+					"fontFamily": "var(--wp--custom--body--font-family)",
+					"name": "Default Body Font",
+					"slug": "body"
+				},
+				{
 					"fontFace": [
 						{
 							"fontDisplay": "swap",

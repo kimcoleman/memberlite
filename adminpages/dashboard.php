@@ -31,11 +31,15 @@ function memberlite_dashboard() {
 
 			<?php memberlite_dashboard_welcome_callback(); ?>
 
+			<?php memberlite_dashboard_whats_new_callback(); ?>
+
 		</div>
 
 		<div class="memberlite_sidebar">
 
 			<?php memberlite_dashboard_child_theme_callback(); ?>
+
+			<?php memberlite_dashboard_ai_agents_callback(); ?>
 
 		</div>
 
@@ -83,9 +87,20 @@ function memberlite_dashboard_welcome_callback() {
 						<?php esc_html_e( 'Customize the Theme', 'memberlite' ); ?>
 					</div>
 					<div class="memberlite_box-description">
-						<p><?php esc_html_e( 'Use the Customize > Memberlite Options screen to modify theme layout, logo, fonts, colors, copyright message and more.', 'memberlite' ); ?></p>
+						<p><?php esc_html_e( 'Use Appearance > Customize to change layouts, fonts, colors, the copyright message and more.', 'memberlite' ); ?></p>
 						<p><a href="<?php echo esc_url( wp_customize_url() ); ?>"><?php esc_html_e( 'Customize Your Theme', 'memberlite' ); ?></a></p>
 						<p><a href="https://www.paidmembershipspro.com/documentation/memberlite/memberlite-theme-customization/?utm_source=memberlite-theme&utm_medium=memberlite-guide&utm_campaign=theme-customization" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Docs: Customizing Memberlite', 'memberlite' ); ?></a></p>
+					</div>
+				</div>
+				<div class="memberlite_box memberlite_box-has-icon">
+					<div class="memberlite_box-title memberlite_box-title-has-icon">
+						<span class="dashicons dashicons-align-wide"></span>
+						<?php esc_html_e( 'Header and Footer Variations', 'memberlite' ); ?>
+					</div>
+					<div class="memberlite_box-description">
+						<p><?php esc_html_e( 'Design your header and footer in the block editor. Start from a Header or Footer Variations pattern, then choose it in Appearance > Customize > Header or Footer.', 'memberlite' ); ?></p>
+						<p><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=memberlite_header' ) ); ?>"><?php esc_html_e( 'Manage Headers', 'memberlite' ); ?></a> | <a href="<?php echo esc_url( admin_url( 'edit.php?post_type=memberlite_footer' ) ); ?>"><?php esc_html_e( 'Manage Footers', 'memberlite' ); ?></a></p>
+						<p><a href="https://www.paidmembershipspro.com/documentation/memberlite/header-footer-variations/?utm_source=memberlite-theme&utm_medium=memberlite-guide&utm_campaign=header-footer-variations" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Docs: Header and Footer Variations', 'memberlite' ); ?></a></p>
 					</div>
 				</div>
 				<div class="memberlite_box memberlite_box-has-icon">
@@ -122,13 +137,111 @@ function memberlite_dashboard_child_theme_callback() {
 				<?php do_action( 'memberlite_guide_additional' ); ?>
 			<?php } else { ?>
 				<p>
-					<?php esc_html_e( 'If you need to customize the theme beyond the settings in Appearance > Customize, use a child theme. Child themes allow you to change the appearance of your site, while preseving the ability to update the primary "parent" theme.', 'memberlite' ); ?>
+					<?php esc_html_e( 'If you need to customize the theme beyond the settings in Appearance > Customize, use a child theme. Child themes allow you to change the appearance of your site, while preserving the ability to update the primary "parent" theme.', 'memberlite' ); ?>
 				</p>
 				<p><a href="https://developer.wordpress.org/themes/advanced-topics/child-themes/" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Learn more about child themes in the WordPress Theme Handbook', 'memberlite' ); ?></a></p>
 				<p><a class="button button-primary" href="https://www.paidmembershipspro.com/documentation/download/?utm_source=memberlite-theme&utm_medium=memberlite-guide&utm_campaign=child-theme" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Download a Blank Child Theme', 'memberlite' ); ?></a></p>
 			<?php } ?>
 		</div> <!-- end memberlite_section_inside -->
 	</div> <!-- end memberlite_dashboard_child_theme -->
+	<?php
+}
+
+/**
+ * Callback: What's new in the current release.
+ *
+ * Update the items for each release.
+ *
+ * @since TBD
+ */
+function memberlite_dashboard_whats_new_callback() {
+	$items = array(
+		array(
+			'title'       => __( 'Layouts', 'memberlite' ),
+			'description' => __( 'Pages, posts, archives, search results and custom post types each have a default layout in the Customizer: Right Sidebar, Left Sidebar, Narrow, Contained or Full Width. Change it for a single page or post in the Layout panel of the block editor.', 'memberlite' ),
+			'link_text'   => __( 'Set Default Layouts', 'memberlite' ),
+			'link_url'    => wp_customize_url(),
+		),
+		array(
+			'title'       => __( 'Page Settings and Banner Image Panels', 'memberlite' ),
+			'description' => __( 'Page templates and the Memberlite Settings meta box are gone. Banner, title and breadcrumb options are in the Page Settings panel of the block editor, and banner images have their own panel.', 'memberlite' ),
+		),
+		array(
+			'title'       => __( 'Alerts', 'memberlite' ),
+			'description' => __( 'Memberlite > Alerts lists content and settings that an update changed, with a one-click fix where there is one.', 'memberlite' ),
+			'link_text'   => __( 'View Alerts', 'memberlite' ),
+			'link_url'    => admin_url( 'admin.php?page=memberlite-alerts' ),
+		),
+		array(
+			'title'       => __( 'Gradients and Textures', 'memberlite' ),
+			'description' => __( 'Gradient presets follow your color scheme. Add a background texture to Group, Columns, Column and Cover blocks from the Texture panel in the Styles tab.', 'memberlite' ),
+		),
+		array(
+			'title'       => __( 'Custom Post Type Settings', 'memberlite' ),
+			'description' => __( 'Custom post types can set their own breadcrumbs, author block and previous/next links in Appearance > Customize > Other Post Types.', 'memberlite' ),
+		),
+		array(
+			'title'       => __( 'Patterns, Color Schemes and Block Styles', 'memberlite' ),
+			'description' => __( 'More than 20 new block patterns, new color schemes, and new block styles, including a Card style for groups, columns and query loops.', 'memberlite' ),
+		),
+	);
+	?>
+	<div id="memberlite_dashboard_whats_new" class="memberlite_section" data-visibility="shown" data-activated="true">
+		<div class="memberlite_section_toggle">
+			<button class="memberlite_section-toggle-button" type="button" aria-expanded="true">
+				<span class="dashicons dashicons-arrow-up-alt2"></span>
+				<?php
+				/* translators: %s: the Memberlite version number. */
+				echo esc_html( sprintf( __( 'What\'s New in Memberlite %s', 'memberlite' ), MEMBERLITE_VERSION ) );
+				?>
+			</button>
+		</div>
+		<div class="memberlite_section_inside">
+			<div class="memberlite-feature-section">
+				<?php foreach ( $items as $item ) { ?>
+					<div class="memberlite_box">
+						<div class="memberlite_box-title"><?php echo esc_html( $item['title'] ); ?></div>
+						<div class="memberlite_box-description">
+							<p><?php echo esc_html( $item['description'] ); ?></p>
+							<?php if ( ! empty( $item['link_url'] ) ) { ?>
+								<p><a href="<?php echo esc_url( $item['link_url'] ); ?>"><?php echo esc_html( $item['link_text'] ); ?></a></p>
+							<?php } ?>
+						</div>
+					</div>
+				<?php } ?>
+			</div>
+			<p><a href="<?php echo esc_url( get_template_directory_uri() . '/readme.txt' ); ?>" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'View the full changelog', 'memberlite' ); ?></a></p>
+		</div> <!-- end memberlite_section_inside -->
+	</div> <!-- end memberlite_dashboard_whats_new -->
+	<?php
+}
+
+/**
+ * Callback: Using an AI agent.
+ *
+ * @since TBD
+ */
+function memberlite_dashboard_ai_agents_callback() {
+	$agents_file = get_template_directory() . '/AGENTS.md';
+	$agents_path = 0 === strpos( $agents_file, ABSPATH ) ? substr( $agents_file, strlen( ABSPATH ) ) : $agents_file;
+	?>
+	<div id="memberlite_dashboard_ai_agents" class="memberlite_section" data-visibility="shown" data-activated="true">
+		<div class="memberlite_section_toggle">
+			<button class="memberlite_section-toggle-button" type="button" aria-expanded="true">
+				<span class="dashicons dashicons-arrow-up-alt2"></span>
+				<?php esc_html_e( 'Using an AI Agent', 'memberlite' ); ?>
+			</button>
+		</div>
+		<div class="memberlite_section_inside">
+			<p><?php esc_html_e( 'If you manage your site with an AI coding agent, such as Claude Code, Codex or Cursor, point it to the notes that ship with Memberlite. They explain how to customize the theme safely and link to DESIGN.md, the design and customization reference.', 'memberlite' ); ?></p>
+			<p><code><?php echo esc_html( $agents_path ); ?></code></p>
+			<p><?php esc_html_e( 'An agent that starts in your site\'s root folder may not find them on its own. Add this line to the instructions file there (AGENTS.md or CLAUDE.md):', 'memberlite' ); ?></p>
+			<p><code><?php
+				/* translators: %s: path to the theme's AGENTS.md file. */
+				echo esc_html( sprintf( __( 'Before changing the Memberlite theme or its settings, read %s.', 'memberlite' ), $agents_path ) );
+			?></code></p>
+		</div> <!-- end memberlite_section_inside -->
+	</div> <!-- end memberlite_dashboard_ai_agents -->
 	<?php
 }
 

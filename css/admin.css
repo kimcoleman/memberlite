@@ -565,7 +565,7 @@ body[class*="toplevel_page_memberlite-"] #footer-left a {
  */
 .memberlite_admin .memberlite-feature-section {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: var(--memberlite--spacing--medium);
 	margin-top: var(--memberlite--spacing--medium);
 }
